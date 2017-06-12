@@ -1,0 +1,48 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+  <!--버전 확인: 3.1, web.xml 3.1 검색해서 copy&paste-->
+
+  <display-name>hello-spring</display-name>
+
+  <!--DispatcherServlet: 모든 request 받는다(front controller)-->
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>    <!--Front Controller: dispatcherServlet, 모든 요청이 여기로 들어온다.-->
+    <servlet-class>
+      org.springframework.web.servlet.DispatcherServlet
+    </servlet-class>
+    <init-param> <!--초기화-->
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+        <!--참조할 설정 파일, 스프링 메인 설정 파일-->
+        /WEB-INF/config/spring/dispatcherServlet.xml
+      </param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>/</url-pattern>                        <!--/(root) 표시는 모든 요청이 dispatcher Servlet을 통과한다는 것, /bbs 하면 root는 안되고 bbs 이하만-->
+  </servlet-mapping>  <!--Servlet 설정 완료-->
+
+  <!--스프링 설정 파일(dispatcherServlet.xml) 생성-->
+  <!--WEB-INF 아래에 config/spring/dispatcherServlet.xml 순서로 생성-->
+  <!--dispatcherServlet.xml는 spring 디렉토리 우클릭 + new + XMLConfigurationFile + SpringConfig로 생성-->
+
+  <!--filter 설정-->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+</web-app>
