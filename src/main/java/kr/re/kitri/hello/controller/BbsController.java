@@ -1,5 +1,6 @@
 package kr.re.kitri.hello.controller;
 
+import kr.re.kitri.hello.model.Article;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,26 +41,44 @@ public class BbsController {
         return "bbs/request_write";
     }
 
-    @RequestMapping(value = "/bbs/write", method = RequestMethod.POST)
-    public ModelAndView doWrite(@RequestParam("article_id") String articleId,
-                          @RequestParam("title") String title,
-                          @RequestParam("author") String author,
-                          @RequestParam("content") String content) {
+//    @RequestMapping(value = "/bbs/write", method = RequestMethod.POST)        //request_write에서 form에 method="post" 확인
+//    public ModelAndView doWrite(@RequestParam("article_id") String articleId,
+//                          @RequestParam("title") String title,
+//                          @RequestParam("author") String author,
+//                          @RequestParam("content") String content) {
+//
+//        System.out.println(articleId);
+//        System.out.println(title);
+//        System.out.println(author);
+//        System.out.println(content);
+//
+//        ModelAndView mav = new ModelAndView();
+//        mav.setViewName("bbs/do_write");                        //do_write.jsp 페이지로 아래 값들을 받는다.
+//        mav.addObject("articleId", articleId);
+//        mav.addObject("title", title);
+//        mav.addObject("author", author);
+//        mav.addObject("content", content);
+//
+//        return mav;
+//    }
 
-        System.out.println(articleId);
-        System.out.println(title);
-        System.out.println(author);
-        System.out.println(content);
+
+    /*
+     *  Commander 객체 (Naming Convention 맞춰줘야 한다, request_write에서 통일, do_write에서 ${article.변수} 형태로 해줘야 한다.)
+     */
+    @RequestMapping(value = "/bbs/write", method = RequestMethod.POST)
+    public ModelAndView doWrite(Article article) {
+
+        System.out.println(article);
 
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("bbs/do_write");                        //do_write.jsp 페이지로 아래 값들을 받는다.
-        mav.addObject("articleId", articleId);
-        mav.addObject("title", title);
-        mav.addObject("author", author);
-        mav.addObject("content", content);
+        mav.setViewName("bbs/do_write");
+        mav.addObject("article", article);
 
         return mav;
     }
+
+
 
 //    @RequestMapping("/bbs/write/do")                      // 많이 쓰는 방법은 아니다.
 //    public String doWrite(HttpServletRequest request) {

@@ -15,10 +15,10 @@
 <body>
     <h1>다음과 같이 등록되었습니다.</h1>
     <ul>
-        <li>${articleId}</li>
-        <li>${title}</li>
-        <li>${author}</li>
-        <li>${content}</li>
+        <li>${article.articleId}</li>
+        <li>${article.title}</li>
+        <li>${article.author}</li>
+        <li>${article.content}</li>
     </ul>
 </body>
 </html>
