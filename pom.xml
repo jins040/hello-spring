@@ -37,6 +37,13 @@
       <version>3.1.0</version>
       <scope>provided</scope> <!--scope: 원래 servlet lib는 톰캣이 포함하고 있다, Local에서 컴파일할 때만 사용하고 실제 서버에 배포할 때는 빼도 무관-->
     </dependency>
+    <!--JSTL 설정, 반복문(for each 기능) 위해서, 최근 트렌드는 아님.-->
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>hello</finalName>

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
     <title>Title</title>
@@ -14,6 +15,17 @@
 </head>
 <body>
     <h1>전체보기 페이지입니다.</h1>
+
+
+    <c:forEach var="article" items="${list}">   <!--items에서 객체를 받아 var에 넣어준다.-->
+        <ul>
+            <li>글 번호 : ${article.articleId}</li>
+            <li>제목 : <a href="/bbs/${article.articleId}">${article.title}</a></li>
+            <li>작성자 : ${article.author}</li>
+            <li>내용 : ${article.content}</li>
+        </ul>
+    </c:forEach>
+
 
     <p>${list[0].title}</p>
 
