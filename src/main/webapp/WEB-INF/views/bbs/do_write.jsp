@@ -15,10 +15,11 @@
 <body>
     <h1>다음과 같이 등록되었습니다.</h1>
     <ul>
-        <li>${article.articleId}</li>
+        <li>${article.articleId}</li>   <!--EL, Expression Language-->
         <li>${article.title}</li>
         <li>${article.author}</li>
         <li>${article.content}</li>
     </ul>
+<a href="/bbs">전체 글 보기</a>
 </body>
 </html>

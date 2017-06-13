@@ -14,5 +14,9 @@
 </head>
 <body>
     <h1>전체보기 페이지입니다.</h1>
+
+    <p>${list[0].title}</p>
+
+<a href="/bbs/write">글쓰기</a>    <!--Get 방식으로, GET 화면으로 가야 되기 때문에-->
 </body>
 </html>

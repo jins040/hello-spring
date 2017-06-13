@@ -9,7 +9,7 @@
 
     <!--annotation 중 schema/mvc 사용, 가운데 것-->
     <mvc:annotation-driven />                           <!--dispatcher servlet이 자동으로 실행하도록 해주는 것-->
-
+                                                        <!--Handler Mapping 지원-->
     <!--bean으로 등록한다는 것: -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">

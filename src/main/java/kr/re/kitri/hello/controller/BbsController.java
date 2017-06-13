@@ -1,5 +1,6 @@
 package kr.re.kitri.hello.controller;
 
+import kr.re.kitri.hello.common.MockArticle;
 import kr.re.kitri.hello.model.Article;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * /bbs ..전체보기
@@ -22,8 +25,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class BbsController {
 
     @RequestMapping("/bbs")
-    public String viewAll() {
-        return "bbs/view_all";
+    public ModelAndView viewAll() {
+
+        //전체보기를 하기 위한 데이터를 가져온다.
+        MockArticle mock = new MockArticle();
+        List<Article> list = mock.getArticles();
+
+        return new ModelAndView("bbs/view_all").addObject("list", list);    //선호되는 코드 방식, 한 번에 처리
     }
 
     @RequestMapping("/bbs/{articleID}")             //경로 변수={요청변수}, DB에서 글을 조회해올 때 사용
