@@ -56,7 +56,7 @@
                 <%--<p>작성자 : <input type="text" name="article_author"></p>--%>
                 <%--<p>내용 : <textarea name="content"></textarea></p>--%>
 
-                <p><input type="submit" value="글 등록하기" class="btn btn-lg btn-success"></input></p>
+                <p><input type="submit" value="글 등록하기" class="btn btn-lg btn-success"></p>
             </form>
         </div>
 

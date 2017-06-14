@@ -16,11 +16,9 @@ public class MainController {   //잘 등록되었으면 좌측에 초록색 bea
     }                           //root를 요청하면 index 응답
                                 //redirect 개념: root를 '요청'했을 때 bbs로 '응답'해주는 것
 
-    @RequestMapping
-    public String test() {
-        return "test";
-    }
-
-
+//    @RequestMapping("/bs-sample")
+//    public String test() {
+//        return "bslol/bs_sample";
+//    }
 
 }

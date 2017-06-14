@@ -31,6 +31,18 @@
   <!--WEB-INF 아래에 config/spring/dispatcherServlet.xml 순서로 생성-->
   <!--dispatcherServlet.xml는 spring 디렉토리 우클릭 + new + XMLConfigurationFile + SpringConfig로 생성-->
 
+  <!--Bean 등록 메타 정보 구성, 설정 파일 분리 위한 세팅-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      classpath:spring/applicationContext.xml         <!--가장 기본이 되는 설정 파일, XML Configuration 파일로 생성-->
+      classpath:spring/db.xml
+    </param-value>
+  </context-param>
+
   <!--filter 설정-->
   <filter>
     <filter-name>encodingFilter</filter-name>
