@@ -13,9 +13,9 @@
 <body>
     <h1>친구 등록 내용입니다.</h1>
     <ul>
-        <li>${amigoName}</li>
-        <li>${phoneNum}</li>
-        <li>${email}</li>
+        <li>${amigo.amigoName}</li>
+        <li>${amigo.phoneNum}</li>
+        <li>${amigo.email}</li>
     </ul>
 </body>
 </html>

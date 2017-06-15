@@ -37,11 +37,11 @@
             <form action="/amigo/regist" method="post">
                 <div class="input-group input-group-lg border_setting">
                     <span class="input-group-addon">친구 이름</span>
-                    <input type="text" name="amigo_name" class="form-control" placeholder="Amigo Name">
+                    <input type="text" name="amigoName" class="form-control" placeholder="Amigo Name">
                 </div>
                 <div class="input-group input-group-lg border_setting">
                     <span class="input-group-addon">핸드폰</span>
-                    <input type="text" name="phone_num" class="form-control" placeholder="Phone #">
+                    <input type="text" name="phoneNum" class="form-control" placeholder="Phone #">
                 </div>
                 <div class="input-group input-group-lg border_setting">
                     <span class="input-group-addon">이메일</span>

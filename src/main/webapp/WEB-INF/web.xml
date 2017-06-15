@@ -26,12 +26,13 @@
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>                        <!--/(root) 표시는 모든 요청이 dispatcher Servlet을 통과한다는 것, /bbs 하면 root는 안되고 bbs 이하만-->
   </servlet-mapping>  <!--Servlet 설정 완료-->
-
   <!--스프링 설정 파일(dispatcherServlet.xml) 생성-->
   <!--WEB-INF 아래에 config/spring/dispatcherServlet.xml 순서로 생성-->
   <!--dispatcherServlet.xml는 spring 디렉토리 우클릭 + new + XMLConfigurationFile + SpringConfig로 생성-->
 
+
   <!--Bean 등록 메타 정보 구성, 설정 파일 분리 위한 세팅-->
+  <!--Application이 로딩될 대 listener가 반응하여 수행-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

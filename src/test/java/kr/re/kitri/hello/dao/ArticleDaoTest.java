@@ -10,13 +10,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by danawacomputer on 2017-06-14.
  */
-public class TestArticleDao {
+public class ArticleDaoTest {
 
     //공통되는 부분 수행 함수(먼저 수행된다, @Before 설정)
     private ApplicationContext context;
 
     @Before
-    public void init() {
+    public void setup() {
 
         //ApplicationContext가 Spring Container
         //설정 파일 경로를 정할 때 dispatcherServlet.xml 파일 경로를 반영해야 하는데 실제로는 resources 패키지에 있어야 한다
@@ -39,13 +39,20 @@ public class TestArticleDao {
 
     }
 
-    //Junit library 필요, 스프링 버전이랑 맞춰줘야 한다(버전 4 이상)
+    //테스트하려면 Junit library 필요, 스프링 버전이랑 맞춰줘야 한다(버전 4 이상)
     //좌측 녹색 화살표 누르면 실행, 문제 없으면 녹색 동그라미(실패하면 빨간색)
     @Test
     public void testInsertArticle() {
 
         ArticleDao dao = context.getBean("articleDao", ArticleDao.class);   //Spring container(context)에서 articleDao 가져오는 것
-        dao.insertArticle(new Article());
+
+        Article article = new Article();
+        article.setArticleId("3");
+        article.setTitle("테스트케이스");
+        article.setAuthor("tc");
+        article.setContent("테스트입니다.");
+
+        dao.insertArticle(article);   // Article이 들어가는지 테스트
 
     }
 

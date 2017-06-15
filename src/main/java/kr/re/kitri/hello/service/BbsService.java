@@ -15,7 +15,7 @@ import java.util.List;
 @Service //관리받을 수 있도록 설정
 public class BbsService {
 
-    //sevice는 dao(repository)를 호출한다.
+    //sevice는 dao(repository, Data Access Object)를 호출한다.
     @Autowired
     private ArticleDao dao;
 

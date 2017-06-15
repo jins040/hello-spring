@@ -5,32 +5,30 @@ import kr.re.kitri.hello.model.Article;
 import kr.re.kitri.hello.service.BbsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 /**
  * /bbs ..전체보기
- * /bbs/15 ..상세보기(15번 글)
- * /bbs/15/modify ..수정(15번 글 수정)
- * /bbs/15/remove ..삭제(15번 글 삭제), http method 중에 delete가 있다.
+ * /bbs/{articleId} ..상세보기(15번 글)
+ * /bbs/{articleId}/modify ..수정(15번 글 수정)
+ * /bbs/{articleId}/remove ..삭제(15번 글 삭제), http method 중에 delete가 있다.
  *
  * /bbs/write ..글 작성화면 요청
  * /bbs/write/do ..글 작성하기
  */
 
 @Controller                     //컨트롤러 annotation 달고 diapatcher Servlet에 등록
+@RequestMapping("/bbs")         //class 레벨에서 bbs로 mapping 해주면 하위 객체들은 bbs 이후로 설정된다.
 public class BbsController {
 
     @Autowired                  //멤버 변수를 자동으로 메모리에 할당해주는 설정, Dependency 생성
     private BbsService service; //service 패키지에서 @service 설정하여 managed되도록
                                 //Controller는 무조건 service를 호출한다.
 
-    @RequestMapping("/bbs")
+    @RequestMapping("")
     public ModelAndView viewAll() {
 
         //전체보기를 하기 위한 데이터를 가져온다.
@@ -40,7 +38,7 @@ public class BbsController {
         return new ModelAndView("bbs/view_all").addObject("list", list);    //선호되는 코드 방식, 한 번에 처리
     }
 
-    @RequestMapping("/bbs/{articleID}")             //경로 변수={요청변수}, DB에서 글을 조회해올 때 사용
+    @RequestMapping("/{articleID}")             //경로 변수={요청변수}, DB에서 글을 조회해올 때 사용
     public ModelAndView viewDetail(@PathVariable("articleID") String articleID) {
 
         ModelAndView mav = new ModelAndView();
@@ -50,7 +48,7 @@ public class BbsController {
         return mav;
     }
 
-    @RequestMapping(value = "/bbs/write", method = RequestMethod.GET)
+    @GetMapping("/write")                                   //@RequestMapping(value = "/write", method = RequestMethod.GET)
     public String write() {
         return "bbs/request_write";
     }
@@ -58,7 +56,7 @@ public class BbsController {
     /*
      *  Commander 객체 (Naming Convention 맞춰줘야 한다, request_write에서 통일, do_write에서 ${article.변수} 형태로 해줘야 한다.)
      */
-    @RequestMapping(value = "/bbs/write", method = RequestMethod.POST)
+    @PostMapping("/write")                                  //@RequestMapping(value = "/write", method = RequestMethod.POST)
     public ModelAndView doWrite(Article article) {
 
         System.out.println(article);

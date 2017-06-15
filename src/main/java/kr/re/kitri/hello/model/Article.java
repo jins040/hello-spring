@@ -5,6 +5,7 @@ package kr.re.kitri.hello.model;
  */
 public class Article {
 
+    //records
     private String articleId;
     private String title;
     private String author;
