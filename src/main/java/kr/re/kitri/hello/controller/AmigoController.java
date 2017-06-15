@@ -7,8 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by danawacomputer on 2017-06-12.
+ *
+ * /amigo .. 친구 전체 보기
+ * /amigo/regist (GET) .. 친구 등록 화면으로 이동
+ * /amigo/regist (POST) .. 친구 등록
+ * /amigo/{id} .. 친구 상세 보기
+ * /amigo/{id}/modify (GET) .. 친구 수정하기 화면으로 이동
+ * /amigo/{id}/modify (POST) .. 친구 수정하기
+ * /amigo/{id}/remove (GET) .. 친구 삭제하기
  */
 @Controller
 @RequestMapping("/amigo")
@@ -18,35 +29,39 @@ public class AmigoController {
     private AmigoService service;
 
     @RequestMapping("")
-    public String amigoInit() {
-        return "amigo/amigo_init";
+    public ModelAndView amigoInit() {
+
+        List<Amigo> amigoList = service.getAmigos();
+
+        return new ModelAndView("amigo/amigo_init").addObject("amigoList", amigoList);
     }
 
-    @RequestMapping("/{articleId}")
-    public ModelAndView amigoDetail(@PathVariable("articleId") String articleId) {
+    @RequestMapping("/{amigoName}")
+    public ModelAndView amigoDetail(@PathVariable("amigoName") String amigoName) {
 
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("amigo/amigo_detail");
-        mav.addObject("articleID", articleId);
+        Amigo amigo = service.viewDetailAmigo(amigoName);
 
-        return mav;
+        return new ModelAndView("amigo/amigo_detail").addObject("amigo", amigo);
     }
 
+    /**
+     * 친구 등록 화면 이동
+     */
     @GetMapping("/regist")
     public String amigoReg() {
         return "amigo/amigo_regist";
     }
 
+    /**
+     * 친구 등록 수행
+     * @param amigo
+     */
     @PostMapping("/regist")
     public ModelAndView amigoGo(Amigo amigo) {
 
         service.registAmigo(amigo);
 
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("amigo/amigo_go");
-        mav.addObject("amigo", amigo);
-
-        return mav;
+        return new ModelAndView("amigo/regist_ok").addObject("amigo", amigo);
 
     }
 

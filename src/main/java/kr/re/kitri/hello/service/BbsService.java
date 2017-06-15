@@ -35,20 +35,21 @@ public class BbsService {
      * 글 전체 보기
      * @return 전체 글
      */
-    public List<Article> viewArticles() {
 
+    public List<Article> getArticles() {
 
-        return null;
+        return dao.selectAllArticles();
+
     }
 
     /**
      * 상세 글 보기
-     * @param articleID 글 번호
+     * @param articleId 글 번호
      * @return 글 객체
      */
-    public Article viewArticle(String articleID) {
+    public Article viewArticle(String articleId) {
 
-        return null;
+        return dao.selectArticleById(articleId);
     }
 
 }

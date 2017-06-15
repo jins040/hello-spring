@@ -21,14 +21,12 @@
     <c:forEach var="article" items="${list}">   <!--items에서 객체를 받아 var에 넣어준다.-->
         <ul>
             <li>글 번호 : ${article.articleId}</li>
-            <li>제목 : <a href="/bbs/${article.articleId}">${article.title}</a></li>
-            <li>작성자 : ${article.author}</li>
-            <li>내용 : ${article.content}</li>
+            <li>
+                제목 : <a href="/bbs/${article.articleId}">${article.title}</a>
+                    (${article.author})
+            </li>
         </ul>
     </c:forEach>
-
-
-    <p>${list[0].title}</p>
 
 <a href="/bbs/write">글쓰기</a>    <!--Get 방식으로, GET 화면으로 가야 되기 때문에-->
 

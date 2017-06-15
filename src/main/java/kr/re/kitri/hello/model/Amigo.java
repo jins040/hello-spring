@@ -5,10 +5,27 @@ package kr.re.kitri.hello.model;
  */
 public class Amigo {
 
+    private String amigoId;
     private String amigoName;
     private String phoneNum;
     private String email;
 
+    public Amigo() {
+    }
+    public Amigo(String amigoId, String amigoName, String phoneNum, String email) {
+        this.amigoId = amigoId;
+        this.amigoName = amigoName;
+        this.phoneNum = phoneNum;
+        this.email = email;
+    }
+
+    public String getAmigoId() {
+        return amigoId;
+    }
+
+    public void setAmigoId(String amigoId) {
+        this.amigoId = amigoId;
+    }
 
     public String getAmigoName() {
         return amigoName;
@@ -37,7 +54,8 @@ public class Amigo {
     @Override
     public String toString() {
         return "Amigo{" +
-                "amigoName='" + amigoName + '\'' +
+                "amigoId='" + amigoId + '\'' +
+                ", amigoName='" + amigoName + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", email='" + email + '\'' +
                 '}';

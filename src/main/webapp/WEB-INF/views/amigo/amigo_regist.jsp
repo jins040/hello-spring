@@ -47,8 +47,12 @@
                     <span class="input-group-addon">이메일</span>
                     <input type="text" name="email" class="form-control" placeholder="Email Address">
                 </div>
-
-                <p><input type="submit" value="등록" class="btn btn-lg btn-success"></p>
+                <div style="float: right">
+                    <p>
+                        <input type="submit" value="등록" class="btn btn-md btn-success">
+                        <a href="/amigo" class="btn btn-md btn-success">처음으로</a>
+                    </p>
+                </div>
             </form>
         </div>
 

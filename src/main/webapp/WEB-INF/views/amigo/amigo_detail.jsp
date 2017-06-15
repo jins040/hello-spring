@@ -11,6 +11,14 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>${articleId}번 째 Amigo가 조회되었습니다.</h1>
+    <h1>${amigo.amigoId}번 째 Amigo가 조회되었습니다.</h1>
+    <ul>
+        <li>#${amigo.amigoId}</li>
+        <li>이름 : ${amigo.amigoName}</li>
+        <li>전화 번호 : ${amigo.phoneNum}</li>
+        <li>이메일 : ${amigo.email}</li>
+    </ul>
+
+    <a href="/amigo" class="btn btn-md btn-success">이전화면</a>
 </body>
 </html>

@@ -32,20 +32,17 @@ public class BbsController {
     public ModelAndView viewAll() {
 
         //전체보기를 하기 위한 데이터를 가져온다.
-        MockArticle mock = new MockArticle();
-        List<Article> list = mock.getArticles();
+        List<Article> list = service.getArticles();
 
         return new ModelAndView("bbs/view_all").addObject("list", list);    //선호되는 코드 방식, 한 번에 처리
     }
 
     @RequestMapping("/{articleID}")             //경로 변수={요청변수}, DB에서 글을 조회해올 때 사용
-    public ModelAndView viewDetail(@PathVariable("articleID") String articleID) {
+    public ModelAndView viewDetail(@PathVariable("articleID") String articleId) {
 
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("bbs/view_detail");
-        mav.addObject("articleID", articleID);
+        Article article = service.viewArticle(articleId);
 
-        return mav;
+        return new ModelAndView("bbs/view_detail").addObject("article", article);
     }
 
     @GetMapping("/write")                                   //@RequestMapping(value = "/write", method = RequestMethod.GET)

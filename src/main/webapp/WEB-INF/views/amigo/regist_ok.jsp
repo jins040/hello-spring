@@ -17,5 +17,7 @@
         <li>${amigo.phoneNum}</li>
         <li>${amigo.email}</li>
     </ul>
+
+    <a href="/amigo" class="btn btn-md btn-success">처음으로</a>
 </body>
 </html>

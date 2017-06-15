@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 /**
  * Created by danawacomputer on 2017-06-14.
  */
@@ -53,6 +55,27 @@ public class ArticleDaoTest {
         article.setContent("테스트입니다.");
 
         dao.insertArticle(article);   // Article이 들어가는지 테스트
+
+    }
+
+    @Test
+    public void testSelectAllArticles() {
+
+        ArticleDao dao = context.getBean("articleDao", ArticleDao.class);
+
+        List<Article> test_list = dao.selectAllArticles();
+
+        Assert.assertTrue(test_list.size() > 0);
+        System.out.println(test_list.size());
+        Assert.assertTrue(test_list.get(0).getAuthor().equals("kim"));
+
+    }
+
+    @Test
+    public void testSelectArticleById() {
+        ArticleDao dao = context.getBean("articleDao", ArticleDao.class);
+        Article article = dao.selectArticleById("2");
+        Assert.assertTrue(article.getAuthor().equals("lee"));
 
     }
 

@@ -12,5 +12,14 @@
 </head>
 <body>
     <h1>${articleID}번 글이 조회되었습니다.</h1>
+    <ul>
+        <li>${article.articleId}</li>
+        <li>${article.title}</li>
+        <li>${article.author}</li>
+        <li>${article.content}</li>
+    </ul>
+
+    <a href="/bbs/">전체 보기</a>
+    <a href="/bbs/write">글쓰기</a>
 </body>
 </html>
