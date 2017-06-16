@@ -23,7 +23,7 @@
     <!--bean들을 자동으로 container에 올려준다.-->
     <context:component-scan base-package="kr.re.kitri.hello"/>
 
-    <!--bean으로 등록한다는 것: -->
+    <!--bean으로 등록한다는 것: container에 올려준다-->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />  <!--맨 뒤에 view를 views로 바꾸고 jsp파일 추가-->
