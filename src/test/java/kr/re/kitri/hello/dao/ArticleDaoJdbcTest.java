@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by danawacomputer on 2017-06-14.
  */
-public class ArticleDaoTest {
+public class ArticleDaoJdbcTest {
 
     //공통되는 부분 수행 함수(먼저 수행된다, @Before 설정)
     private ApplicationContext context;
@@ -32,7 +32,7 @@ public class ArticleDaoTest {
 
     @Test
     public void testGetSum() {
-        ArticleDao dao = context.getBean("articleDao", ArticleDao.class);
+        ArticleDaoJdbc dao = context.getBean("articleDaoJdbc", ArticleDaoJdbc.class);
 
         //결과가 8이면 test 통과(getSum 클래스가 합 연산 수행하는 클래스)
         int result = dao.getSum(3, 5);
@@ -46,7 +46,7 @@ public class ArticleDaoTest {
     @Test
     public void testInsertArticle() {
 
-        ArticleDao dao = context.getBean("articleDao", ArticleDao.class);   //Spring container(context)에서 articleDao 가져오는 것
+        ArticleDaoJdbc dao = context.getBean("articleDaoJdbc", ArticleDaoJdbc.class);   //Spring container(context)에서 articleDao 가져오는 것
 
         Article article = new Article();
         article.setArticleId("3");
@@ -61,7 +61,7 @@ public class ArticleDaoTest {
     @Test
     public void testSelectAllArticles() {
 
-        ArticleDao dao = context.getBean("articleDao", ArticleDao.class);
+        ArticleDaoJdbc dao = context.getBean("articleDaoJdbc", ArticleDaoJdbc.class);
 
         List<Article> test_list = dao.selectAllArticles();
 
@@ -73,7 +73,7 @@ public class ArticleDaoTest {
 
     @Test
     public void testSelectArticleById() {
-        ArticleDao dao = context.getBean("articleDao", ArticleDao.class);
+        ArticleDaoJdbc dao = context.getBean("articleDaoJdbc", ArticleDaoJdbc.class);
         Article article = dao.selectArticleById("2");
         Assert.assertTrue(article.getAuthor().equals("lee"));
 

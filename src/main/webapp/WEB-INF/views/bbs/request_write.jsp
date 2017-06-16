@@ -48,7 +48,7 @@
                     <input type="text" name="author" class="form-control" placeholder="작성자">
                 </div>
                 <div class="input-group input-group-lg border_setting">
-                    <span class="input-group-addon">글번호</span>
+                    <span class="input-group-addon">내용</span>
                     <textarea name="content" class="form-control" placeholder="내용"></textarea>
                 </div>
                 <%--<p>글 번호 : <input type="text" name="article_id"></p>--%>

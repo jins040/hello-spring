@@ -1,6 +1,7 @@
 package kr.re.kitri.hello.service;
 
 import kr.re.kitri.hello.dao.ArticleDao;
+import kr.re.kitri.hello.dao.ArticleDaoJdbc;
 import kr.re.kitri.hello.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 public class BbsService {
 
     //sevice는 dao(repository, Data Access Object)를 호출한다.
+    //Interface 이름으로 그냥 Autowired 해도 된다, dao가 바꿔도 service 수정이 필요 없다.(dao에서 쓰는 쪽에 repository 있기 때문)
     @Autowired
     private ArticleDao dao;
 
