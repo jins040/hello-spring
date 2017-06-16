@@ -33,6 +33,7 @@ public class ArticleDaoJdbc implements ArticleDao{
      * 글 입력
      * @param article
      */
+    @Override   //제대로 overriding 되어 있는지 확인하기 위해서 명시해주는 것이 좋다(IntelliJ는 tool 특성으로 좌측에 표시)
     public void insertArticle(Article article) {
 
         try {
