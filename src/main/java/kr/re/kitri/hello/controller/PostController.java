@@ -7,11 +7,13 @@ import kr.re.kitri.hello.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by danawacomputer on 2017-06-16.
@@ -56,6 +58,14 @@ public class PostController {
         postService.registPost(post);
         return new ModelAndView("post/display_write").addObject("post", post);
     }
+
+    @RequestMapping("view-all/{memberSeq}")
+    public ModelAndView individaulPost(@PathVariable("memberSeq") String memberSeq) {
+
+        List<Map<String, Object>> post = postService.viewPost(memberSeq);
+        return new ModelAndView("post/post_by_member").addObject("post", post);
+    }
+
 
     @GetMapping("/sign-up")
     public String signup() {

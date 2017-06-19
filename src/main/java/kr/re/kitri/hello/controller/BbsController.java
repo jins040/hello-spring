@@ -37,12 +37,34 @@ public class BbsController {
         return new ModelAndView("bbs/view_all").addObject("list", list);    //선호되는 코드 방식, 한 번에 처리
     }
 
+
+    /**
+     * 글 전체보기 API 버전
+     * /bbs/api .. 전체보기 (API)
+     *
+     * 1. @ResponseBody
+     * 2. Return 타입을 List<Article>을 리턴한다. (JSON으로 변환해준다.)
+     */
+    @RequestMapping("/api")
+    @ResponseBody
+    public List<Article> viewAllApi() {
+        return service.getArticles();
+    }
+
+
     @RequestMapping("/{articleID}")             //경로 변수={요청변수}, DB에서 글을 조회해올 때 사용
     public ModelAndView viewDetail(@PathVariable("articleID") String articleId) {
 
         Article article = service.viewArticle(articleId);
 
         return new ModelAndView("bbs/view_detail").addObject("article", article);
+    }
+
+    @RequestMapping("/{articleId}/api")
+    @ResponseBody                           //return 형태가 Object(객체) 타입이면 JSON 사용한다는 것 그리고 jackson library(jackson databing)가 필요하다.
+    public Article viewDetailApi(@PathVariable String articleId) {
+        Article article = service.viewArticle(articleId);
+        return article;
     }
 
     @GetMapping("/write")                                   //@RequestMapping(value = "/write", method = RequestMethod.GET)
@@ -66,6 +88,12 @@ public class BbsController {
         mav.addObject("article", article);
 
         return mav;
+    }
+
+    @PostMapping("/write/api")
+    public String doWriteApi(@RequestBody Article article) {    //Article 객체를 JSON 형태로 바꾸어 담아준다, Jackson 설정해야 가능
+        service.registArticle(article);
+        return "bbs/view_all";
     }
 
 

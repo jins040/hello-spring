@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by danawacomputer on 2017-06-16.
@@ -36,5 +37,9 @@ public class PostService {
 
     public List<Member> getMembers() {
         return memberDao.selectAllMembers();
+    }
+
+    public List<Map<String,Object>> viewPost(String memberSeq) {
+        return postDao.selectPostById(memberSeq);
     }
 }

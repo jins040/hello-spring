@@ -16,8 +16,10 @@
 
     <c:forEach var="memberList" items="${memberList}">   <!--items에서 객체를 받아 var에 넣어준다.-->
         <ul>
-            <li>Member # : <a href="/post/view-all/${memberList.userId}">${memberList.memberSeq}</a></li>
-            <li>User ID : ${memberList.userId}</li>
+            <li>Member # : ${memberList.memberSeq}</li>
+            <li>
+                User ID : <a href="/post/view-all/${memberList.memberSeq}">${memberList.userId}</a>(작성 글 목록 보기)
+            </li>
             <li>PW : ${memberList.password}</li>
             <li>E-mail address : ${memberList.email}</li>
             <li>Point : ${memberList.point}</li>

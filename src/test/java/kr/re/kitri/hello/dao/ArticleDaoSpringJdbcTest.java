@@ -45,4 +45,23 @@ public class ArticleDaoSpringJdbcTest {
         Assert.assertTrue(testList.size() > 0);
         Assert.assertTrue(testList.get(0).getAuthor().equals("kim"));
     }
+
+    @Test
+    public void testDeleteArticle() {
+        List<Article> testList = articleDao.selectAllArticles();
+        System.out.println(testList.size());
+        articleDao.deleteArticle("10");
+        System.out.println(testList.size());
+    }
+
+    @Test
+    public void testUpdateArticle() {
+        Article article = new Article();
+        article.setTitle("Restful테스트");
+        article.setAuthor("park");
+        article.setContent("Restful입니다.");
+        List<Article> testList = articleDao.selectAllArticles();
+        articleDao.updateArticle("10", article);
+        System.out.println(testList.get(9));
+    }
 }

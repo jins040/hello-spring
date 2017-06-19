@@ -131,4 +131,12 @@ public class ArticleDaoJdbc implements ArticleDao{
         }
     }
 
+    public void deleteArticle(String articleId) {
+        //TODO
+    }
+
+    public void updateArticle(String articleId, Article article) {
+        //TODO
+    }
+
 }
