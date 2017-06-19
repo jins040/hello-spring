@@ -1,5 +1,6 @@
 package kr.re.kitri.hello.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import kr.re.kitri.hello.model.Member;
 import kr.re.kitri.hello.model.Post;
 import kr.re.kitri.hello.service.PostService;
@@ -37,8 +38,12 @@ public class PostController {
     }
 
     @RequestMapping("/view-all")
-    public String viewAll() {
-        return "post/view_all";
+    public ModelAndView viewAll() {
+
+        //전체보기를 위한 data
+        List<Member> memberList = postService.getMembers();
+
+        return new ModelAndView("post/view_all").addObject("memberList", memberList);
     }
 
     @GetMapping("view-all/write")
