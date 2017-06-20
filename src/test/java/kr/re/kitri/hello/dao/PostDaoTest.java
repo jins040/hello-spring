@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * Created by danawacomputer on 2017-06-19.
  */
@@ -16,10 +18,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class PostDaoTest {
     @Autowired PostDao postdao;
 
-//    @Test
-//    public void testSelectPostById() {
-//        Post testPost = postdao.selectPostById("2");
-//        System.out.println(testPost);
-//        Assert.assertTrue(testPost.getTitle().equals("어렵다"));
-//    }
+    @Test
+    public void testSelectPostById() {
+        List<Post> testList = postdao.selectPostById("2");
+        System.out.println(testList);
+        Assert.assertTrue(testList.get(0).getTitle().equals("어렵다"));
+    }
 }

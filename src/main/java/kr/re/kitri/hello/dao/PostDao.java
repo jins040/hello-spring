@@ -26,28 +26,31 @@ public class PostDao {
     }
 
 
-    public List<Map<String, Object>> selectPostById(String memberSeq) {
-        String query =
-                "select post_seq, title, content, write_date, member_seq\n" +
-                    "from post\n" +
-                    "where member_seq = ?;";
-        return jdbcTemplate.queryForList(query, memberSeq);
-    }
-
-//    public Post selectPostById(String memberSeq) {
+//    public List<Post> selectPostById(String memberSeq) {
 //        String query =
 //                "select post_seq, title, content, write_date, member_seq\n" +
-//                        "from post\n" +
-//                        "where member_seq = ?;";
+//                    "from post\n" +
+//                    "where member_seq = ?;";
 //
-//        return jdbcTemplate.queryForObject(query, (rs, rowNum) -> {
-//            Post post = new Post();
-//            post.setPostSeq(rs.getInt(1));
-//            post.setTitle(rs.getString(2));
-//            post.setContent(rs.getString(3));
-//            post.setWriteDate(rs.getString(4));
-//            post.setMemberSeq(rs.getInt(5));
-//            return post;
-//        }, Integer.parseInt(memberSeq));
+//        List<Post> list = jdbcTemplate.queryForList()
+//
+//        return null;
 //    }
+
+    public List<Post> selectPostById(String memberSeq) {
+        String query =
+                "select post_seq, title, content, write_date, member_seq\n" +
+                        "from post\n" +
+                        "where member_seq = ?;";
+
+        return jdbcTemplate.query(query, (rs, rowNum) -> {
+            Post post = new Post();
+            post.setPostSeq(rs.getInt(1));
+            post.setTitle(rs.getString(2));
+            post.setContent(rs.getString(3));
+            post.setWriteDate(rs.getString(4));
+            post.setMemberSeq(rs.getInt(5));
+            return post;
+        }, Integer.parseInt(memberSeq));
+    }
 }

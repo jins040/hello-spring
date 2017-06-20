@@ -6,11 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
+<c:forEach var="post" items="${post}">
         <ul>
             <li>${post.memberSeq}</li>
             <li>${post.postSeq}</li>
@@ -18,6 +20,7 @@
             <li>${post.content}</li>
             <li>${post.writeDate}</li>
         </ul>
-        <a href="/post/view-all">처음 화면으로</a>
+</c:forEach>
+<a href="/post/view-all">처음 화면으로</a>
 </body>
 </html>

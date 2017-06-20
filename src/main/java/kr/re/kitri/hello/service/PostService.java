@@ -39,7 +39,7 @@ public class PostService {
         return memberDao.selectAllMembers();
     }
 
-    public List<Map<String,Object>> viewPost(String memberSeq) {
+    public List<Post> viewPost(String memberSeq) {
         return postDao.selectPostById(memberSeq);
     }
 }

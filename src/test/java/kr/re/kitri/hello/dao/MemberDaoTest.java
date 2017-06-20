@@ -35,8 +35,9 @@ public class MemberDaoTest {
     @Test
     public void testSelectAllMembers() {
         List<Member> testList = memberDao.selectAllMembers();
+        System.out.println(testList);
         Assert.assertTrue(testList.size() > 0);
-        Assert.assertTrue(testList.get(0).getUserId().equals("kim"));
+        Assert.assertTrue(testList.get(0).getUserId().equals("park"));
     }
 
 }

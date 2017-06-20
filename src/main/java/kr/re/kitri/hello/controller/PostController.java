@@ -62,7 +62,7 @@ public class PostController {
     @RequestMapping("view-all/{memberSeq}")
     public ModelAndView individaulPost(@PathVariable("memberSeq") String memberSeq) {
 
-        List<Map<String, Object>> post = postService.viewPost(memberSeq);
+        List<Post> post = postService.viewPost(memberSeq);
         return new ModelAndView("post/post_by_member").addObject("post", post);
     }
 
