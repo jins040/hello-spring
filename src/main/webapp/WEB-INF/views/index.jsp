@@ -6,16 +6,23 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Title</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>HelloAngular</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-
-    <h1>hello world</h1>
-    <h2>안녕</h2>
-
-</body>
+<my-app>
+    <h1>Loading..</h1>  <!--my-app 실행되기 전에 Loading..-->
+</my-app>
+<script type="text/javascript" src="/asset/js/inline.bundle.js"></script>
+<script type="text/javascript" src="/asset/js/polyfills.bundle.js"></script>
+<script type="text/javascript" src="/asset/js/styles.bundle.js"></script>
+<script type="text/javascript" src="/asset/js/vendor.bundle.js"></script>
+<script type="text/javascript" src="/asset/js/main.bundle.js"></script></body>
 </html>
